@@ -2,13 +2,12 @@ interface Book {
   title: string;
   author: string;
   isbn: string;
-  content: string; // This is the heavy data we want to share
+  content: string;
 }
 
 export interface BookWithMeta {
-  book: Book; // Reference to shared flyweight
+  book: Book;
   availability: boolean;
-  sales: number;
 }
 
 const books = new Map<string, Book>();
@@ -20,7 +19,7 @@ const createBook = (title: string, author: string, isbn: string): Book => {
     title,
     author,
     isbn,
-    content: "Book content goes here. ".repeat(1000), // 20KB+ of repeated text
+    content: "Book content goes here. ".repeat(1000),
   };
 
   books.set(isbn, book);
@@ -30,13 +29,16 @@ const createBook = (title: string, author: string, isbn: string): Book => {
 export const generateWithFlyweight = (): string => {
   books.clear();
   const t0 = performance.now();
-  const bookList: BookWithMeta[] = [];
+  const library: BookWithMeta[] = [];
 
   for (let i = 0; i < 100000; i++) {
-    bookList.push({
-      book: createBook("Harry Potter", "JK Rowling", "AB123"), // Same book shared
+    library.push({
+      book: createBook(
+        "Harry Potter and the Order of the Phoenix",
+        "JK Rowling",
+        "AB123"
+      ), // Same book shared
       availability: Math.random() > 0.5,
-      sales: Math.floor(Math.random() * 1000),
     });
   }
 

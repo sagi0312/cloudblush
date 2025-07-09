@@ -4,21 +4,19 @@ export interface BookWithMetaTraditional {
   isbn: string;
   content: string;
   availability: boolean;
-  sales: number;
 }
 
 export function generateWithoutFlyweight(): string {
   const t0 = performance.now();
-  const bookList: BookWithMetaTraditional[] = [];
+  const library: BookWithMetaTraditional[] = [];
 
   for (let i = 0; i < 100000; i++) {
-    bookList.push({
-      title: "Harry Potter",
+    library.push({
+      title: "Harry Potter and the Order of the Phoenix",
       author: "JK Rowling",
       isbn: "AB123",
       content: "Book content goes here. ".repeat(1000), // 20KB duplicated every time
       availability: Math.random() > 0.5,
-      sales: Math.floor(Math.random() * 1000),
     });
   }
 
