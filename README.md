@@ -34,11 +34,6 @@ Without Proxy: Operation runs fresh every time.
 
 With Proxy: Caches and reuses result on subsequent calls.
 
-## ⚙️ How to Run
-
-Clone the repo
-npm install
-npm run dev
 
 ## 🙋‍♀️ Author
 Anju Karanji
