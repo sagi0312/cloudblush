@@ -3,35 +3,43 @@ import { FlyweightDemo } from "./FlyweightDemo";
 import { ProxyDemo } from "./ProxyDemo";
 
 export const App = () => {
-  const [current, setCurrent] = useState("flyweight");
+  const [current, setCurrent] = useState<"flyweight" | "proxy" | "">("");
 
   return (
-    <>
-      <div
-        style={{
-          display: "flex",
-          textAlign: "center",
-          padding: "2rem",
-          gap: "1rem",
-          justifyContent: "center",
-        }}
-      >
-        <button
-          onClick={() => setCurrent("flyweight")}
-          className="button"
-          style={{ backgroundColor: "gray" }}
+    <div>
+      <div style={{ textAlign: "center", marginTop: "2rem" }}>
+        {current === "" && <h1>Flyweight/Proxy Pattern Demo</h1>}
+        <nav
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "2rem",
+          }}
         >
-          Flyweight Pattern
-        </button>
-        <button
-          onClick={() => setCurrent("proxy")}
-          className="button"
-          style={{ backgroundColor: "gray" }}
-        >
-          Proxy Pattern
-        </button>
+          <button
+            onClick={() => setCurrent("flyweight")}
+            className="button"
+            style={{ backgroundColor: "gray" }}
+          >
+            Flyweight
+          </button>
+          <button
+            onClick={() => setCurrent("proxy")}
+            className="button"
+            style={{ backgroundColor: "gray" }}
+          >
+            Proxy
+          </button>
+        </nav>
+        {current === "flyweight" && <h1>Flyweight Pattern Demo</h1>}
+        {current === "proxy" && <h1>Proxy Pattern Demo</h1>}
       </div>
-      {current === "flyweight" ? <FlyweightDemo /> : <ProxyDemo />}
-    </>
+
+      {/* Content */}
+      <div style={{ padding: "2rem" }}>
+        {current === "flyweight" && <FlyweightDemo />}
+        {current === "proxy" && <ProxyDemo />}
+      </div>
+    </div>
   );
 };

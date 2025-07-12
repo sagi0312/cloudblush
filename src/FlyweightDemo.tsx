@@ -1,40 +1,33 @@
 import { useState } from "react";
-import { generateWithFlyweight } from "./withFlyweight";
-import { generateWithoutFlyweight } from "./withoutFlyweight";
+import { generateWithFlyweight } from "./utils/withFlyweight";
+import { generateWithoutFlyweight } from "./utils/withoutFlyweight";
 
 export const FlyweightDemo = () => {
   const [withFlyweight, setWithFlyweight] = useState("");
   const [withNoFlyweight, setWithNoFlyweight] = useState("");
 
-  const handleFlyweightClick = () => {
-    const result = generateWithFlyweight();
-    setWithFlyweight(result);
-  };
-
-  const handleNoFlyweightClick = () => {
-    const result = generateWithoutFlyweight();
-    setWithNoFlyweight(result);
-  };
-
   return (
-    <div style={{ textAlign: "center", padding: "2rem" }}>
-      <h1>Flyweight Pattern Demo</h1>
+    <div>
       <p>Creating 100,000 books with 20KB content each</p>
-
-      <div>
-        <button onClick={handleFlyweightClick} className="button">
-          With Flyweight
+      <br />
+      <div style={{ display: "flex", gap: "1rem" }}>
+        <button
+          className="button"
+          onClick={() => setWithNoFlyweight(generateWithoutFlyweight)}
+        >
+          No Flyweight
         </button>
-        <br />
-        <br />
-        <button className="button" onClick={handleNoFlyweightClick}>
-          Without Flyweight
-        </button>
-      </div>
-
-      <div>
-        {withFlyweight && <p>{withFlyweight}</p>}
         {withNoFlyweight && <p>{withNoFlyweight}</p>}
+      </div>
+      <br />
+      <div style={{ display: "flex", gap: "1rem" }}>
+        <button
+          onClick={() => setWithFlyweight(generateWithFlyweight)}
+          className="button"
+        >
+          Yes Flyweight
+        </button>
+        {withFlyweight && <p>{withFlyweight}</p>}
       </div>
     </div>
   );
