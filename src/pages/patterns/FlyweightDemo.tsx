@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { generateWithFlyweight } from "./utils/withFlyweight";
-import { generateWithoutFlyweight } from "./utils/withoutFlyweight";
+import { generateWithoutFlyweight } from "../../utils/withoutFlyweight";
+import { generateWithFlyweight } from "../../utils/withFlyweight";
 
 export const FlyweightDemo = () => {
   const [withFlyweight, setWithFlyweight] = useState("");

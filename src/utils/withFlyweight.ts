@@ -1,7 +1,10 @@
-export class BookWithMeta {
+class BookWithMeta {
+  // Intrinsic variables
   title: string;
   author: string;
   content: string;
+
+  // Extrinsic variables
   shelf: number;
 
   constructor(title, author, content, shelf) {
@@ -11,8 +14,6 @@ export class BookWithMeta {
     this.shelf = shelf;
   }
 }
-
-const library: BookWithMeta[] = [];
 
 class Book {
   title: string;
@@ -26,6 +27,7 @@ class Book {
   }
 }
 
+const bookShop: BookWithMeta[] = [];
 const bookMap = new Map<string, Book>();
 
 const createBook = (title, author, content) => {
@@ -41,9 +43,9 @@ export const generateWithFlyweight = (): string => {
   const t0 = performance.now();
   for (let i = 0; i < 100000; i++) {
     const book = createBook(
-      "Happry Potter",
+      "Harry Potter - 5th",
       "J.K.Rowling",
-      "Heavy content".repeat(1000)
+      "Huge Content".repeat(1000)
     );
     const bookWithMeta = new BookWithMeta(
       book?.title,
@@ -51,9 +53,9 @@ export const generateWithFlyweight = (): string => {
       book?.content,
       Math.floor(Math.random() * 200)
     );
-    library.push(bookWithMeta);
+    bookShop.push(bookWithMeta);
   }
   const t1 = performance.now();
   const duration = (t1 - t0).toFixed(2);
-  return `yay! Flyweight: ${duration} ms | ${bookMap.size} unique Book objects`;
+  return `${duration}ms to create ${bookMap.size} objects`;
 };

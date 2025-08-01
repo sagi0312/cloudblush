@@ -1,4 +1,4 @@
-export class BookWithMeta {
+class BookWithMeta {
   title: string;
   author: string;
   content: string;
@@ -12,21 +12,20 @@ export class BookWithMeta {
   }
 }
 
-const library: BookWithMeta[] = [];
+const bookShop: BookWithMeta[] = [];
 
 export function generateWithoutFlyweight(): string {
   const t0 = performance.now();
   for (let i = 0; i < 100000; i++) {
     const bookWithMeta = new BookWithMeta(
-      "Harry Potter",
+      "Harry Potter - 5th",
       "J.K.Rowling",
-      "Large content".repeat(1000),
-      2
+      "Huge Content".repeat(1000),
+      Math.floor(Math.random() * 200)
     );
-    library.push(bookWithMeta);
+    bookShop.push(bookWithMeta);
   }
   const t1 = performance.now();
   const duration = (t1 - t0).toFixed(2);
-
-  return `sad! Regular: ${duration} ms | ${library.length} unique Book objects`;
+  return `${duration}ms to create ${bookShop.length} objects`;
 }

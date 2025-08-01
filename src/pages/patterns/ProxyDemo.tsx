@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { testWithoutProxy, testWithProxy } from "./utils/proxyUtils";
+import { testWithoutProxy, testWithProxy } from "../../utils/proxyUtils";
 
 export const ProxyDemo = () => {
   const [withoutProxyResult, setWithoutProxyResult] = useState<string>("");

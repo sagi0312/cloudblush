@@ -1,45 +1,39 @@
 import { useState } from "react";
-import { FlyweightDemo } from "./FlyweightDemo";
-import { ProxyDemo } from "./ProxyDemo";
+import PerformancePatterns from "./pages/patterns/PerformancePatterns";
+import GraphqlDemo from "./pages/graph/GraphqlDemo";
 
 export const App = () => {
-  const [current, setCurrent] = useState<"flyweight" | "proxy" | "">("");
-
+  const [current, setCurrent] = useState<"patterns" | "graphqlDemo">(
+    "patterns"
+  );
   return (
-    <div>
-      <div style={{ textAlign: "center", marginTop: "2rem" }}>
-        {current === "" && <h1>Flyweight/Proxy Pattern Demo</h1>}
-        <nav
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "2rem",
-          }}
+    <>
+      <nav
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "2rem",
+        }}
+      >
+        <button
+          onClick={() => setCurrent("patterns")}
+          className="button"
+          style={{ backgroundColor: "gray" }}
         >
-          <button
-            onClick={() => setCurrent("flyweight")}
-            className="button"
-            style={{ backgroundColor: "gray" }}
-          >
-            Flyweight
-          </button>
-          <button
-            onClick={() => setCurrent("proxy")}
-            className="button"
-            style={{ backgroundColor: "gray" }}
-          >
-            Proxy
-          </button>
-        </nav>
-        {current === "flyweight" && <h1>Flyweight Pattern Demo</h1>}
-        {current === "proxy" && <h1>Proxy Pattern Demo</h1>}
-      </div>
-
-      {/* Content */}
+          Patterns
+        </button>
+        <button
+          onClick={() => setCurrent("graphqlDemo")}
+          className="button"
+          style={{ backgroundColor: "gray" }}
+        >
+          GraphQL Demo
+        </button>
+      </nav>
       <div style={{ padding: "2rem" }}>
-        {current === "flyweight" && <FlyweightDemo />}
-        {current === "proxy" && <ProxyDemo />}
+        {current === "patterns" && <PerformancePatterns />}
+        {current === "graphqlDemo" && <GraphqlDemo />}
       </div>
-    </div>
+    </>
   );
 };
