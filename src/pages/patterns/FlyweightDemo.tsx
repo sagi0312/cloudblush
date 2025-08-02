@@ -10,21 +10,15 @@ export const FlyweightDemo = () => {
     <div>
       <p>Creating 100,000 books with 20KB content each</p>
       <br />
-      <div style={{ display: "flex", gap: "1rem" }}>
-        <button
-          className="button"
-          onClick={() => setWithNoFlyweight(generateWithoutFlyweight)}
-        >
+      <div style={{ display: "flex", gap: "1rem", alignItems: "left" }}>
+        <button onClick={() => setWithNoFlyweight(generateWithoutFlyweight)}>
           No Flyweight
         </button>
         {withNoFlyweight && <p>{withNoFlyweight}</p>}
       </div>
       <br />
-      <div style={{ display: "flex", gap: "1rem" }}>
-        <button
-          onClick={() => setWithFlyweight(generateWithFlyweight)}
-          className="button"
-        >
+      <div style={{ display: "flex", gap: "1rem", alignItems: "left" }}>
+        <button onClick={() => setWithFlyweight(generateWithFlyweight)}>
           Yes Flyweight
         </button>
         {withFlyweight && <p>{withFlyweight}</p>}

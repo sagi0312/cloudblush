@@ -22,10 +22,7 @@ export const ProxyDemo = () => {
             alignItems: "center",
           }}
         >
-          <button
-            onClick={() => setWithoutProxyResult(testWithoutProxy)}
-            className="button"
-          >
+          <button onClick={() => setWithoutProxyResult(testWithoutProxy)}>
             No Proxy
           </button>
           <b>{withoutProxyResult}</b>
@@ -37,10 +34,7 @@ export const ProxyDemo = () => {
             alignItems: "center",
           }}
         >
-          <button
-            onClick={() => setWithProxyResult(testWithProxy)}
-            className="button"
-          >
+          <button onClick={() => setWithProxyResult(testWithProxy)}>
             Yes Proxy
           </button>
 
